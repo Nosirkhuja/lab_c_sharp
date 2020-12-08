@@ -306,16 +306,16 @@ namespace lab_2_var_3_1
             // {string   info}\n
             // {DateTime Dt}\n
             // {float StepX}\n
-            // {int NStepsX}\n
+            // {int countX}\n
             // {float StepY}\n
-            // {int NStepsY}\n
+            // {int countY}\n
             // {double array[0, 0]}\n
             // {double array[0, 1]}\n
             // ...
-            // {double array[0, NStepsY]}\n
+            // {double array[0, countY]}\n
             // {double array[1, 0]}\n
             // ...
-            // {double array[NStepsX, NStepsY]}\n
+            // {double array[countX, countY]}\n
 
             FileStream fs = null;
             try
@@ -327,15 +327,15 @@ namespace lab_2_var_3_1
                 Dt = Convert.ToDateTime(sr.ReadLine());
 
                 float Step;
-                int NSteps;
+                int count;
                 // grid_x
                 Step = (float)Convert.ToDouble(sr.ReadLine());
-                NSteps = Convert.ToInt32(sr.ReadLine());
-                grid_x = new Grid1D(Step, NSteps);
+                count= Convert.ToInt32(sr.ReadLine());
+                grid_x = new Grid1D(Step, count);
                 // grid_y
                 Step = (float)Convert.ToDouble(sr.ReadLine());
-                NSteps = Convert.ToInt32(sr.ReadLine());
-                grid_y = new Grid1D(Step, NSteps);
+                count = Convert.ToInt32(sr.ReadLine());
+                grid_y = new Grid1D(Step, count);
 
                 // array[,]
                 array = new double[grid_x.count, grid_y.count];
@@ -652,24 +652,24 @@ class Program
     static void Main(string[] args)
     {
         // 1)
-        V3DataOnGrid task1 = new V3DataOnGrid("/Users/homidov/Desktop/data.txt");
-        Console.WriteLine(task1.ToLongString("F3"));
+        V3DataOnGrid t1 = new V3DataOnGrid("/Users/homidov/Desktop/data.txt");
+        Console.WriteLine(t1.ToLongString("F3"));
 
         // 2)
-        V3MainCollection task2 = new V3MainCollection();
-        task2.AddDefaults();
+        V3MainCollection t2 = new V3MainCollection();
+        t2.AddDefaults();
 
         // 3)
         // RMin
-        Console.WriteLine($"RMin(3, 4):\n{task2.RMin(new Vector2(3, 4))}\n");
+        Console.WriteLine($"RMin(3, 4):\n{t2.RMin(new Vector2(3, 4))}\n");
 
         // RMinDataItem
-        Console.WriteLine($"RMinDataItem(3, 4):\n{task2.RMinDataItem(new Vector2(3, 4))}\n");
+        Console.WriteLine($"RMinDataItem(3, 4):\n{t2.RMinDataItem(new Vector2(3, 4))}\n");
 
         // DataCollectionExceptDataOnGrid
         Console.WriteLine("DataCollectionExceptDataOnGrid:");
-        var task3 = task2.DataCollectionExceptDataOnGrid;
-        foreach (Vector2 vec in task3)
+        var t3 = t2.DataCollectionExceptDataOnGrid;
+        foreach (Vector2 vec in t3)
         {
             Console.WriteLine(vec);
         }
